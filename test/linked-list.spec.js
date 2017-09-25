@@ -1,5 +1,6 @@
 const Node = require('../src/node');
 const LinkedList = require('../src/linked-list');
+const assert = require("assert");
 
 describe('LinkedList', () => {
     describe('#constructor', () => {
@@ -7,7 +8,8 @@ describe('LinkedList', () => {
 
         it('assign 0 to this.length', () => {
             var one = list.length;
-            expect(list.length).to.equal(0);
+            assert.equal((list.length), 0);
+            // expect(list.length).to.equal(0);
         })
     });
 
@@ -19,8 +21,14 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            expect(list._tail).to.be.an.instanceof(Node)
-            expect(list._head).to.be.an.instanceof(Node)
+            var ddd = list._tail.data;
+            var yyy = data;
+
+            assert.equal((list._tail.data), data);
+            assert.equal((list._head.data), data);
+
+            // expect(list._tail).to.be.an.instanceof(Node)
+            // expect(list._head).to.be.an.instanceof(Node)
         });
 
         it('should add new data to the end of list', () => {
@@ -29,13 +37,14 @@ describe('LinkedList', () => {
             list.append(123);
             list.append(413);
 
-            var one = list.length;
-            var two = list.tail();
-            var three = list.head();
 
-            expect(list.length).to.equal(2);
-            expect(list.tail()).to.equal(413);
-            expect(list.head()).to.equal(123);
+            assert.equal((list.length), 2);
+            assert.equal((list.tail()), 413);
+            assert.equal((list.head()), 123);
+
+            // expect(list.length).to.equal(2);
+            // expect(list.tail()).to.equal(413);
+            // expect(list.head()).to.equal(123);
         });
 
     });
@@ -47,7 +56,9 @@ describe('LinkedList', () => {
             list.append(data);
 
             var three = list.head();
-            expect(list.head()).to.equal(data)
+
+            assert.equal((list.head()), data);
+            // expect(list.head()).to.equal(data)
         });
     });
     describe('#tail', () => {
@@ -57,8 +68,9 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            var three = list.tail();
-            expect(list.tail()).to.equal(data)
+
+            assert.equal((list.head()), data);
+            // expect(list.tail()).to.equal(data)
         });
     });
     describe('#at', () => {
@@ -69,13 +81,13 @@ describe('LinkedList', () => {
             list.append(123);
             list.append(444);
 
-            var one = list.at(0);
-            var two = list.at(1);
-            var three = list.at(2);
+            assert.equal((list.at(0)), 1);
+            assert.equal((list.at(1)), 123);
+            assert.equal((list.at(2)), 444);
 
-            expect(list.at(0)).to.equal(1);
-            expect(list.at(1)).to.equal(123);
-            expect(list.at(2)).to.equal(444);
+            // expect(list.at(0)).to.equal(1);
+            // expect(list.at(1)).to.equal(123);
+            // expect(list.at(2)).to.equal(444);
 
         });
     });
@@ -90,9 +102,9 @@ describe('LinkedList', () => {
 
             list.insertAt(position, data);
 
-            var one = list.at(position);
+            assert.equal(list.at(position), data);
 
-            expect(list.at(position)).to.equal(data);
+            // expect(list.at(position)).to.equal(data);
         });
     });
     describe('#isEmpty', () => {
@@ -101,13 +113,17 @@ describe('LinkedList', () => {
 
             var one = list.isEmpty();
 
-            expect(list.isEmpty()).to.be.true;
+            assert.equal(list.isEmpty(), true);
+
+            // expect(list.isEmpty()).to.be.true;
 
             list.append(32);
 
             one = list.isEmpty();
 
-            expect(list.isEmpty()).to.be.false;
+            assert.equal(list.isEmpty(), false);
+
+            // expect(list.isEmpty()).to.be.false;
         });
     });
 
@@ -120,13 +136,13 @@ describe('LinkedList', () => {
 
             list.clear();
 
-            var one = list.head();
-            var two = list.tail();
-            var three = list.length;
+            assert.equal(list.head(), null);
+            assert.equal(list.tail(), null);
+            assert.equal(list.length, 0);
 
-            expect(list.head()).to.equal(null);
-            expect(list.tail()).to.equal(null);
-            expect(list.length).to.equal(0);
+            // expect(list.head()).to.equal(null);
+            // expect(list.tail()).to.equal(null);
+            // expect(list.length).to.equal(0);
         });
     });
     describe('#deleteAt', () => {
@@ -142,7 +158,10 @@ describe('LinkedList', () => {
             list.deleteAt(2);
 
             var three = list.at(2);
-            expect(list.at(2)).to.equal(4);
+
+            assert.equal(list.at(2), 4);
+
+            // expect(list.at(2)).to.equal(4);
         });
     });
     describe('#reverse', () => {
@@ -158,20 +177,20 @@ describe('LinkedList', () => {
 
             list.reverse();
 
-            var n6 = list.head();
-            var n1 = list.tail();
-            var n5 = list.at(1);
-            var n4 = list.at(2);
-            var n3 = list.at(3);
-            var n2 = list.at(4);
+            assert.equal(list.head(), 6);
+            assert.equal(list.tail(), 1);
+            assert.equal(list.at(1), 5);
+            assert.equal(list.at(2), 4);
+            assert.equal(list.at(3), 3);
+            assert.equal(list.at(4), 2);
 
-            expect(list.head()).to.equal(6);
-            expect(list.tail()).to.equal(1);
-
-            expect(list.at(1)).to.equal(5);
-            expect(list.at(2)).to.equal(4);
-            expect(list.at(3)).to.equal(3);
-            expect(list.at(4)).to.equal(2);
+            // expect(list.head()).to.equal(6);
+            // expect(list.tail()).to.equal(1);
+            //
+            // expect(list.at(1)).to.equal(5);
+            // expect(list.at(2)).to.equal(4);
+            // expect(list.at(3)).to.equal(3);
+            // expect(list.at(4)).to.equal(2);
         });
     });
     describe('#indexOf', () => {
@@ -181,11 +200,11 @@ describe('LinkedList', () => {
             list.append(3);
             list.append(7);
 
-            var n0 = list.indexOf(3);
-            var n1 = list.indexOf(7);
+            assert.equal(list.indexOf(3), 0);
+            assert.equal(list.indexOf(7), 1);
 
-            expect(list.indexOf(3)).to.equal(0);
-            expect(list.indexOf(7)).to.equal(1);
+            // expect(list.indexOf(3)).to.equal(0);
+            // expect(list.indexOf(7)).to.equal(1);
         });
 
         it('should return -1 if data not found', () => {
@@ -195,7 +214,9 @@ describe('LinkedList', () => {
 
             var n0 = list.indexOf(3);
 
-            expect(list.indexOf(3)).to.equal(-1);
+            assert.equal(list.indexOf(3), -1);
+
+            // expect(list.indexOf(3)).to.equal(-1);
         })
     });
     describe('chaining', () => {
@@ -206,7 +227,9 @@ describe('LinkedList', () => {
                 list.append(4).reverse().deleteAt(0).clear().insertAt(0, 3);
             }
 
-            expect(fn).to.not.throw();
+            // assert.equal(fn, Function);
+
+            // expect(fn).to.not.throw();
         })
     })
 });
