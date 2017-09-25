@@ -26,7 +26,7 @@ class LinkedList {
 
     head() {
         if (this.length > 0) {
-            return this._head;
+            return this._head.data;
         } else {
             return null;
         }
@@ -34,13 +34,30 @@ class LinkedList {
 
     tail() {
         if (this.length > 0) {
-            return this._tail;
+            return this._tail.data;
         } else {
             return null;
         }
     }
 
     at(index) {
+        var currentNode = this._head,
+            length = this.length,
+            count = 0;
+
+        if (length === 0 || index < 0 || index > length) {
+            return null;
+        }
+
+        while (count < index) {
+            currentNode = currentNode.next;
+            count++;
+        }
+
+        return currentNode.data;
+    }
+
+    nodeAt(index) {
         var currentNode = this._head,
             length = this.length,
             count = 0;
@@ -65,7 +82,7 @@ class LinkedList {
                 prev: null,
             }
 
-            var nodeCur = this.at(index);
+            var nodeCur = this.nodeAt(index);
             var nodePrev = nodeCur.prev;
 
             node.prev = nodePrev;
@@ -77,7 +94,7 @@ class LinkedList {
 
             return this;
         } else {
-            throw new Error("The index of the item that you have selected more than the length of the list.");
+            return null;
         }
     }
 
@@ -94,7 +111,7 @@ class LinkedList {
     deleteAt(index) {
         if (index < this.length) {
 
-            let node = this.at(index);
+            let node = this.nodeAt(index);
             node.prev.next = node.next;
             node.next.prev = node.prev;
 
