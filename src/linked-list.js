@@ -21,7 +21,7 @@ class LinkedList {
 
         this.length++;
 
-        return node;
+        return this;
     }
 
     head() {
@@ -62,15 +62,15 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-        if (index < this.length) {
-            const node = {
+        if (index <= this.length) {
+            let node = {
                 data: data,
                 next: null,
                 prev: null,
             };
 
-            const nodeCur = this.nodeAt(index);
-            const nodePrev = nodeCur.prev;
+            let nodeCur = this.nodeAt(index);
+            let nodePrev = nodeCur.prev;
 
             node.prev = nodePrev;
             node.next = nodeCur;
@@ -99,8 +99,6 @@ class LinkedList {
         if (index < this.length) {
 
             let node = this.nodeAt(index);
-            // node.prev.next = node.next;
-            // node.next.prev = node.prev;
 
             if (node.next === null) {
                 node.prev.next = null;

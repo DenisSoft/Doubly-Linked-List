@@ -21,9 +21,6 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            var ddd = list._tail.data;
-            var yyy = data;
-
             assert.equal((list._tail.data), data);
             assert.equal((list._head.data), data);
 
