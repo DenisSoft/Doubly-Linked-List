@@ -62,31 +62,31 @@ class LinkedList {
     }
 
     insertAt(index, data) {
-        // if (index <= this.length) {
-        //     let node = {
-        //         data: data,
-        //         next: null,
-        //         prev: null,
-        //     };
-        //
-        //     let nodeCur = this.nodeAt(index);
-        //     let nodePrev = nodeCur.prev;
-        //
-        //     node.prev = nodePrev;
-        //     node.next = nodeCur;
-        //     nodePrev.next = node;
-        //     nodeCur.prev = node;
-        //
-        //     this.length++;
-        //
-        //     return this;
-        // } else {
-        //     return null;
-        // }
+        if (index <= this.length) {
+            let node = {
+                data: data,
+                next: null,
+                prev: null,
+            };
+
+            let nodeCur = this.nodeAt(index);
+            let nodePrev = nodeCur.prev;
+
+            node.prev = nodePrev;
+            node.next = nodeCur;
+            nodePrev.next = node;
+            nodeCur.prev = node;
+
+            this.length++;
+
+            return this;
+        } else {
+            return null;
+        }
     }
 
     isEmpty() {
-        return this.length === 0;
+        // return this.length === 0;
     }
 
     clear() {
