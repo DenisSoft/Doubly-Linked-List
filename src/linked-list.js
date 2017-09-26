@@ -90,33 +90,33 @@ class LinkedList {
     }
 
     clear() {
-        // this.length = 0;
-        // this._head = null;
-        // this._tail = null;
+        this.length = 0;
+        this._head = null;
+        this._tail = null;
     }
 
     deleteAt(index) {
-        if (index < this.length) {
-
-            let node = this.nodeAt(index);
-
-            if (node.next === null) {
-                node.prev.next = null;
-            } else {
-                node.prev.next = node.next;
-            }
-
-            if (node.prev === null) {
-                node.next.prev = null;
-            } else {
-                node.next.prev = node.prev;
-            }
-
-            this.length--;
-            return this;
-        } else {
-            return null;
-        }
+        // if (index < this.length) {
+        //
+        //     let node = this.nodeAt(index);
+        //
+        //     if (node.next === null) {
+        //         node.prev.next = null;
+        //     } else {
+        //         node.prev.next = node.next;
+        //     }
+        //
+        //     if (node.prev === null) {
+        //         node.next.prev = null;
+        //     } else {
+        //         node.next.prev = node.prev;
+        //     }
+        //
+        //     this.length--;
+        //     return this;
+        // } else {
+        //     return null;
+        // }
     }
 
     reverse() {
