@@ -96,45 +96,45 @@ class LinkedList {
     }
 
     deleteAt(index) {
-        // if (index < this.length) {
-        //
-        //     let node = this.nodeAt(index);
-        //
-        //     if (node.next === null) {
-        //         node.prev.next = null;
-        //     } else {
-        //         node.prev.next = node.next;
-        //     }
-        //
-        //     if (node.prev === null) {
-        //         node.next.prev = null;
-        //     } else {
-        //         node.next.prev = node.prev;
-        //     }
-        //
-        //     this.length--;
-        //     return this;
-        // } else {
-        //     return null;
-        // }
+        if (index < this.length) {
+
+            let node = this.nodeAt(index);
+
+            if (node.next === null) {
+                node.prev.next = null;
+            } else {
+                node.prev.next = node.next;
+            }
+
+            if (node.prev === null) {
+                node.next.prev = null;
+            } else {
+                node.next.prev = node.prev;
+            }
+
+            this.length--;
+            return this;
+        } else {
+            return null;
+        }
     }
 
     reverse() {
-        let nodePrev = this._tail.prev;
-        let current = this._tail;
-        this._tail = this._head;
-        this._head = current;
-        for (let i = this.length-1; i > 0; i--) {
-            const node = current;
-            const prev = node.next;
-            node.next = node.prev;
-            node.prev = prev;
-            current = nodePrev;
-            nodePrev = current.prev;
-        }
-        this._tail.prev = this._tail.next;
-        this._tail.next = null;
-        return this;
+        // let nodePrev = this._tail.prev;
+        // let current = this._tail;
+        // this._tail = this._head;
+        // this._head = current;
+        // for (let i = this.length-1; i > 0; i--) {
+        //     const node = current;
+        //     const prev = node.next;
+        //     node.next = node.prev;
+        //     node.prev = prev;
+        //     current = nodePrev;
+        //     nodePrev = current.prev;
+        // }
+        // this._tail.prev = this._tail.next;
+        // this._tail.next = null;
+        // return this;
     }
 
     indexOf(data) {
