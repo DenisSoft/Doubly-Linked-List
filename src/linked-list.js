@@ -70,12 +70,21 @@ class LinkedList {
             };
 
             let nodeCur = this.nodeAt(index);
-            let nodePrev = nodeCur.prev;
-
-            node.prev = nodePrev;
-            node.next = nodeCur;
-            nodePrev.next = node;
-            nodeCur.prev = node;
+            if (nodeCur){
+                let nodePrev = nodeCur.prev;
+                node.prev = nodePrev;
+                node.next = nodeCur;
+                nodePrev.next = node;
+                nodeCur.prev = node;
+            } else {
+                if (this.tail()){
+                    this._tail.next = node;
+                    node.prev = this._tail;
+                    this._tail = node;
+                } else {
+                    this._tail = this._head = node;
+                }
+            }
 
             this.length++;
 
@@ -99,19 +108,22 @@ class LinkedList {
         if (index < this.length) {
 
             let node = this.nodeAt(index);
-
-            if (node.next === null) {
-                node.prev.next = null;
-            } else {
-                node.prev.next = node.next;
+            
+            if (node.prev !== null){
+                if (node.next === null) {
+                    node.prev.next = null;
+                } else {
+                    node.prev.next = node.next;
+                }
             }
-
-            if (node.prev === null) {
-                node.next.prev = null;
-            } else {
-                node.next.prev = node.prev;
+            if (node.next !== null){
+                if (node.prev === null) {
+                    node.next.prev = null;
+                } else {
+                    node.next.prev = node.prev;
+                }
             }
-
+            node.data = null;
             this.length--;
             return this;
         } else {
@@ -138,16 +150,16 @@ class LinkedList {
     }
 
     indexOf(data) {
-        // let node = this._head;
-        // let i = 0;
-        // while (node !== null) {
-        //     if (node.data === data) {
-        //         return i;
-        //     }
-        //     node = node.next;
-        //     i++;
-        // }
-        // return -1;
+        let node = this._head;
+        let i = 0;
+        while (node !== null) {
+            if (node.data === data) {
+                return i;
+            }
+            node = node.next;
+            i++;
+        }
+        return -1;
     }
 }
 
