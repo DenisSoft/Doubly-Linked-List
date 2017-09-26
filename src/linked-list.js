@@ -9,7 +9,6 @@ class LinkedList {
 
     append(data) {
         const node = new Node(data);
-
         if (this.length) {
             this._tail.next = node;
             node.prev = this._tail;
@@ -18,9 +17,7 @@ class LinkedList {
             this._head = node;
             this._tail = node;
         }
-
         this.length++;
-
         return this;
     }
 
@@ -48,16 +45,13 @@ class LinkedList {
         let currentNode = this._head,
             length = this.length,
             count = 0;
-
         if (length === 0 || index < 0 || index > length) {
             return null;
         }
-
         while (count < index) {
             currentNode = currentNode.next;
             count++;
         }
-
         return currentNode;
     }
 
