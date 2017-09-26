@@ -7,7 +7,7 @@ describe('LinkedList', () => {
         const list = new LinkedList();
 
         it('assign 0 to this.length', () => {
-            var one = list.length;
+
             assert.equal((list.length), 0);
             // expect(list.length).to.equal(0);
         })
@@ -52,8 +52,6 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            var three = list.head();
-
             assert.equal((list.head()), data);
             // expect(list.head()).to.equal(data)
         });
@@ -64,7 +62,6 @@ describe('LinkedList', () => {
             const data = 31;
 
             list.append(data);
-
 
             assert.equal((list.head()), data);
             // expect(list.tail()).to.equal(data)
