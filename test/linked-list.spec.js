@@ -1,14 +1,11 @@
 const Node = require('../src/node');
 const LinkedList = require('../src/linked-list');
-const assert = require("assert");
 
 describe('LinkedList', () => {
     describe('#constructor', () => {
         const list = new LinkedList();
 
         it('assign 0 to this.length', () => {
-
-            // assert.equal((list.length), 0);
             expect(list.length).to.equal(0);
         })
     });
@@ -21,9 +18,6 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            assert.equal((list._tail.data), data);
-            assert.equal((list._head.data), data);
-
             expect(list._tail).to.be.an.instanceof(Node)
             expect(list._head).to.be.an.instanceof(Node)
         });
@@ -33,11 +27,6 @@ describe('LinkedList', () => {
 
             list.append(123);
             list.append(413);
-
-
-            assert.equal((list.length), 2);
-            assert.equal((list.tail()), 413);
-            assert.equal((list.head()), 123);
 
             expect(list.length).to.equal(2);
             expect(list.tail()).to.equal(413);
@@ -52,7 +41,6 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            assert.equal((list.head()), data);
             expect(list.head()).to.equal(data)
         });
     });
@@ -63,7 +51,6 @@ describe('LinkedList', () => {
 
             list.append(data);
 
-            assert.equal((list.head()), data);
             expect(list.tail()).to.equal(data)
         });
     });
@@ -74,10 +61,6 @@ describe('LinkedList', () => {
             list.append(1);
             list.append(123);
             list.append(444);
-
-            assert.equal((list.at(0)), 1);
-            assert.equal((list.at(1)), 123);
-            assert.equal((list.at(2)), 444);
 
             expect(list.at(0)).to.equal(1);
             expect(list.at(1)).to.equal(123);
@@ -96,8 +79,6 @@ describe('LinkedList', () => {
 
             list.insertAt(position, data);
 
-            assert.equal(list.at(position), data);
-
             expect(list.at(position)).to.equal(data);
         });
     });
@@ -105,17 +86,9 @@ describe('LinkedList', () => {
         it('should return true if list is empty', () => {
             const list = new LinkedList();
 
-            var one = list.isEmpty();
-
-            assert.equal(list.isEmpty(), true);
-
             expect(list.isEmpty()).to.be.true;
 
             list.append(32);
-
-            one = list.isEmpty();
-
-            assert.equal(list.isEmpty(), false);
 
             expect(list.isEmpty()).to.be.false;
         });
@@ -129,10 +102,6 @@ describe('LinkedList', () => {
             list.append(47);
 
             list.clear();
-
-            assert.equal(list.head(), null);
-            assert.equal(list.tail(), null);
-            assert.equal(list.length, 0);
 
             expect(list.head()).to.equal(null);
             expect(list.tail()).to.equal(null);
@@ -151,10 +120,6 @@ describe('LinkedList', () => {
 
             list.deleteAt(2);
 
-            var three = list.at(2);
-
-            assert.equal(list.at(2), 4);
-
             expect(list.at(2)).to.equal(4);
         });
     });
@@ -170,13 +135,6 @@ describe('LinkedList', () => {
             list.append(6);
 
             list.reverse();
-
-            assert.equal(list.head(), 6);
-            assert.equal(list.tail(), 1);
-            assert.equal(list.at(1), 5);
-            assert.equal(list.at(2), 4);
-            assert.equal(list.at(3), 3);
-            assert.equal(list.at(4), 2);
 
             expect(list.head()).to.equal(6);
             expect(list.tail()).to.equal(1);
@@ -194,9 +152,6 @@ describe('LinkedList', () => {
             list.append(3);
             list.append(7);
 
-            assert.equal(list.indexOf(3), 0);
-            assert.equal(list.indexOf(7), 1);
-
             expect(list.indexOf(3)).to.equal(0);
             expect(list.indexOf(7)).to.equal(1);
         });
@@ -206,10 +161,6 @@ describe('LinkedList', () => {
 
             list.append(7);
 
-            var n0 = list.indexOf(3);
-
-            assert.equal(list.indexOf(3), -1);
-
             expect(list.indexOf(3)).to.equal(-1);
         })
     });
@@ -218,13 +169,8 @@ describe('LinkedList', () => {
             const list = new LinkedList();
 
             function fn() {
-                var rrr = list.append(4);
-                rrr.reverse();
-                    rrr.deleteAt(0);
-                    rrr.clear();
-                    rrr.insertAt(0, 3);
+                list.append(4).reverse().deleteAt(0).clear().insertAt(0, 3);
             }
-            // assert.equal(fn, Function);
             expect(fn).to.not.throw();
         })
     })
