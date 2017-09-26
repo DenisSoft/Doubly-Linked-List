@@ -86,13 +86,13 @@ class LinkedList {
     }
 
     isEmpty() {
-        // return this.length === 0;
+        return this.length === 0;
     }
 
     clear() {
-        this.length = 0;
-        this._head = null;
-        this._tail = null;
+        // this.length = 0;
+        // this._head = null;
+        // this._tail = null;
     }
 
     deleteAt(index) {
