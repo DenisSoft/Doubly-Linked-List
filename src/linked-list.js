@@ -120,34 +120,34 @@ class LinkedList {
     }
 
     reverse() {
-        // let nodePrev = this._tail.prev;
-        // let current = this._tail;
-        // this._tail = this._head;
-        // this._head = current;
-        // for (let i = this.length-1; i > 0; i--) {
-        //     const node = current;
-        //     const prev = node.next;
-        //     node.next = node.prev;
-        //     node.prev = prev;
-        //     current = nodePrev;
-        //     nodePrev = current.prev;
-        // }
-        // this._tail.prev = this._tail.next;
-        // this._tail.next = null;
-        // return this;
+        let nodePrev = this._tail.prev;
+        let current = this._tail;
+        this._tail = this._head;
+        this._head = current;
+        for (let i = this.length-1; i > 0; i--) {
+            const node = current;
+            const prev = node.next;
+            node.next = node.prev;
+            node.prev = prev;
+            current = nodePrev;
+            nodePrev = current.prev;
+        }
+        this._tail.prev = this._tail.next;
+        this._tail.next = null;
+        return this;
     }
 
     indexOf(data) {
-        let node = this._head;
-        let i = 0;
-        while (node !== null) {
-            if (node.data === data) {
-                return i;
-            }
-            node = node.next;
-            i++;
-        }
-        return -1;
+        // let node = this._head;
+        // let i = 0;
+        // while (node !== null) {
+        //     if (node.data === data) {
+        //         return i;
+        //     }
+        //     node = node.next;
+        //     i++;
+        // }
+        // return -1;
     }
 }
 
